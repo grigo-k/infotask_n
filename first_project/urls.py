@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from first.views import index, calc, time
+from first.views import index, calc, time, expression, history, clear
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('time/', time),
     path('calc/', calc),
+    path('expression/', expression),
+    path('history/', history),
+    path('clear/', clear),
 ]

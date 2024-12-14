@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    Menu:
+    <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/time">Time</a></li>
+        <li><a href="/calc">Calc</a></li>
+        <li><a href="/expression">Expression</a></li>
+        <li><a href="/history">History</a></li>
+        <li><a href="/clear">Clear</a></li>
+    </ol>
+
+    History:
+        <table>
+            <tr>
+                <th>Random n</th>
+                <th>Date</th>
+            </tr>
+
+            {% for i in rand_history %}
+                <tr>
+                    <td>{{ i.text }}</td>
+                    <td>{{ i.created_date }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
+
+</body>
+</html>

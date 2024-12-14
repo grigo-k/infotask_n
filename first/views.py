@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from datetime import datetime
+from random import randint
+from first.models import RandomHistory
 
 from django.template.context_processors import request
-
 
 def index(request):
     context = {
@@ -38,3 +39,45 @@ def time(request):
     }
 
     return render(request, 'time_page.html', context)
+
+def expression(request):
+    n = randint(2, 4)
+    nums = []
+    for i in range(n):
+        nums.append(randint(10, 99))
+    r = nums[0]
+    for i in range(1, n):
+        op = randint(1, 2)
+        if op == 1:
+            r += nums[i]
+        else:
+            r -= nums[i]
+
+    historyr = RandomHistory(text=str(r), created_date=datetime.now())
+    historyr.save()
+
+    context = {
+        "title": 'Курс "Промышленное программирование"',
+        "R" : r
+    }
+
+    return render(request, 'expression_page.html', context)
+
+
+def history(request):
+    rand_history = RandomHistory.objects.all()
+    context = {
+        "title": 'Курс "Промышленное программирование"',
+        "rand_history": rand_history
+    }
+
+    return render(request, 'history_page.html', context)
+
+def clear(request):
+    RandomHistory.objects.all().delete()
+    context = {
+        "title": 'Курс "Промышленное программирование"',
+        "name" : "BOOM"
+    }
+
+    return render(request, 'clear.html', context)
