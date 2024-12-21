@@ -17,22 +17,8 @@
         <li><a href="/new">New</a></li>
     </ol>
 
-    History:
-        <table>
-            <tr>
-                <th>Expression</th>
-                <th>Date</th>
-            </tr>
-
-            {% for i in rand_history %}
-                <tr>
-                    <td>{{ i.text }}</td>
-                    <td>{{ i.created_date }}</td>
-                </tr>
-            {% endfor %}
-
-        </table>
-
-
+    <ul>
+        <li>{{ name }}</li>
+    </ul>
 </body>
 </html>

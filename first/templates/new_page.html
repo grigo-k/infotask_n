@@ -17,22 +17,19 @@
         <li><a href="/new">New</a></li>
     </ol>
 
-    History:
-        <table>
-            <tr>
-                <th>Expression</th>
-                <th>Date</th>
-            </tr>
-
-            {% for i in rand_history %}
-                <tr>
-                    <td>{{ i.text }}</td>
-                    <td>{{ i.created_date }}</td>
-                </tr>
-            {% endfor %}
-
-        </table>
-
-
+    <form method="post" action="{% url 'new' %}">
+        {% csrf_token %}
+        {% for field in comment_form %}
+            <div>
+                {{ field.label }}
+            </div>
+            <div>
+                {{ field }}
+            </div>
+        {% endfor %}
+        <div>
+            <input type="submit" value="Send">
+        </div>
+    </form>
 </body>
 </html>

@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from first.views import index, calc, time, expression, history, clear
+from first.views import index, calc, time, expression, history, clear, delete, new
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,6 @@ urlpatterns = [
     path('expression/', expression),
     path('history/', history),
     path('clear/', clear),
+    path('delete/', delete),
+    path('new/', new, name="new"),
 ]
